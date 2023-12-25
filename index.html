@@ -1,95 +1,163 @@
 <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en">
+  <head>
+    <!-- Meta tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <!--=============== BOXICONS ===============-->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <!-- Boxicons CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
+    />
 
-        <!--=============== CSS ===============-->
-        <link rel="stylesheet" href="assets/css/styles.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css" />
 
-        <title>Responsive bottom navigation</title>
-    </head>
-    <body>
-        <!--=============== HEADER ===============-->
-        <header class="header" id="header">
-            <nav class="nav container">
-                <a href="#" class="nav__logo">Marlon</a>
+    <!-- Title -->
+    <title>Responsive Navbar Layout</title>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header" id="header">
+      <nav class="nav container">
+        <a href="#" class="nav-logo">MAHFUZ RP</a>
 
-                <div class="nav__menu" id="nav-menu">
-                    <ul class="nav__list">
-                        <li class="nav__item">
-                            <a href="#home" class="nav__link active-link">
-                                <i class='bx bx-home-alt nav__icon'></i>
-                                <span class="nav__name">Home</span>
-                            </a>
-                        </li>
-                        
-                        <li class="nav__item">
-                            <a href="#about" class="nav__link">
-                                <i class='bx bx-user nav__icon'></i>
-                                <span class="nav__name">About</span>
-                            </a>
-                        </li>
+        <div class="nav-menu" id="nav-menu">
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="#home" class="nav-link active-link">
+                <i class="bx bx-home-alt nav-icon"></i>
+                <span class="nav-name">Home</span>
+              </a>
+            </li>
 
-                        <li class="nav__item">
-                            <a href="#skills" class="nav__link">
-                                <i class='bx bx-book-alt nav__icon'></i>
-                                <span class="nav__name">Skills</span>
-                            </a>
-                        </li>
+            <li class="nav-item">
+              <a href="#Services" class="nav-link">
+                <i class="bx bx-book-alt nav-icon"></i>
+                <span class="nav-name">Services</span>
+              </a>
+            </li>
 
-                        <li class="nav__item">
-                            <a href="#portfolio" class="nav__link">
-                                <i class='bx bx-briefcase-alt nav__icon'></i>
-                                <span class="nav__name">Portfolio</span>
-                            </a>
-                        </li>
+            <li class="nav-item">
+              <a href="#projects" class="nav-link">
+                <i class="bx bx-briefcase-alt nav-icon"></i>
+                <span class="nav-name">Projects</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#about" class="nav-link">
+                <i class="bx bx-user nav-icon"></i>
+                <span class="nav-name">About</span>
+              </a>
+            </li>
 
-                        <li class="nav__item">
-                            <a href="#contactme" class="nav__link">
-                                <i class='bx bx-message-square-detail nav__icon'></i>
-                                <span class="nav__name">Contactme</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+            <li class="nav-item">
+              <a href="#contact" class="nav-link">
+                <i class="bx bx-message-square-detail nav-icon"></i>
+                <span class="nav-name">Contact</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <!-- Actions -->
+        <div class="nav-actions">
+          <!-- Search button -->
+          <i class="bx bx-search nav-search" id="search-btn"></i>
 
-                <img src="assets/img/perfil.png" alt="" class="nav__img">
-            </nav>
-        </header>
+          <!-- Login button -->
+          <i class="bx bx-user nav-login" id="login-btn"></i>
+        </div>
+      </nav>
+    </header>
 
-        <main>
-            <!--=============== HOME ===============-->
-            <section class="container section section__height" id="home">
-                <h2 class="section__title">Home</h2>
-            </section>
+    <!-- Search Section -->
+    <div class="search" id="search">
+      <form action="" class="search-form">
+        <i class="bx bx-search search-icon"></i>
+        <input
+          type="search"
+          placeholder="What's on your mind?"
+          class="search-input"
+        />
+      </form>
 
-            <!--=============== ABOUT ===============-->
-            <section class="container section section__height" id="about">
-                <h2 class="section__title">About</h2>
-            </section>
+      <i class="bx bx-x search-close" id="search-close"></i>
+    </div>
 
-            <!--=============== SKILLS ===============-->
-            <section class="container section section__height" id="skills">
-                <h2 class="section__title">Skills</h2>
-            </section>
+    <!-- Login Section -->
+    <div class="login" id="login">
+      <form action="" class="login-form">
+        <h2 class="login-title">Log In</h2>
 
-            <!--=============== PORTFOLIO ===============-->
-            <section class="container section section__height" id="portfolio">
-                <h2 class="section__title">Portfolio</h2>
-            </section>
+        <div class="login-group">
+          <div>
+            <label for="email" class="login-label">Email</label>
+            <input
+              type="email"
+              placeholder="Write your email"
+              id="email"
+              class="login-input"
+            />
+          </div>
 
-            <!--=============== CONTACTME ===============-->
-            <section class="container section section__height" id="contactme">
-                <h2 class="section__title">Contactme</h2>
-            </section>
-        </main>
-        
+          <div>
+            <label for="password" class="login-label">Password</label>
+            <input
+              type="password"
+              placeholder="Enter your password"
+              id="password"
+              class="login-input"
+            />
+          </div>
+        </div>
 
-        <!--=============== MAIN JS ===============-->
-        <script src="assets/js/main.js"></script>
-    </body>
+        <div>
+          <p class="login-signup">
+            Don't have any account? <a href="#">Sign up</a>
+          </p>
+
+          <a href="#" class="login-forgot"> Forgot your password! </a>
+
+          <button type="submit" class="login-button">Log In</button>
+        </div>
+      </form>
+
+      <i class="bx bx-x login-close" id="login-close"></i>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+      <!----------- HOME ----------->
+      <section class="container section section-height" id="home">
+        <h2 class="section-title">Home</h2>
+        <p>click the <span>navbar items</span> and <span><i class="bx bx-search nav-search" id="search-btn"></i> search icons</span> and <span><i class="bx bx-user nav-login" id="login-btn"></i> profile icons</span> for functionality</p>
+      </section>
+      <!----------- Services ----------->
+      <section class="container section section-height" id="Services">
+        <h2 class="section-title">Services</h2>
+        <p>click the <span>navbar items</span> and <span><i class="bx bx-search nav-search" id="search-btn"></i> search icons</span> and <span><i class="bx bx-user nav-login" id="login-btn"></i> profile icons</span> for functionality</p>
+      </section>
+
+      <!----------- projects ----------->
+      <section class="container section section-height" id="projects">
+        <h2 class="section-title">Projects</h2>
+        <p>click the <span>navbar items</span> and <span><i class="bx bx-search nav-search" id="search-btn"></i> search icons</span> and <span><i class="bx bx-user nav-login" id="login-btn"></i> profile icons</span> for functionality</p>
+      </section>
+      <!----------- ABOUT ----------->
+      <section class="container section section-height" id="about">
+        <h2 class="section-title">About</h2>
+        <p>click the <span>navbar items</span> and <span><i class="bx bx-search nav-search" id="search-btn"></i> search icons</span> and <span><i class="bx bx-user nav-login" id="login-btn"></i> profile icons</span> for functionality</p>
+      </section>
+
+      <!----------- contact ----------->
+      <section class="container section section-height" id="contact">
+        <h2 class="section-title">Contact</h2>
+        <p>click the <span>navbar items</span> and <span><i class="bx bx-search nav-search" id="search-btn"></i> search icons</span> and <span><i class="bx bx-user nav-login" id="login-btn"></i> profile icons</span> for functionality</p>
+      </section>
+    </main>
+
+    <!-- JavaScript -->
+    <script src="assets/js/main.js"></script>
+  </body>
 </html>

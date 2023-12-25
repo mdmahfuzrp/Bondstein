@@ -1,29 +1,47 @@
-/*=============== GOOGLE FONTS ===============*/
+/*--------- GOOGLE FONTS ---------*/
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap");
 
-/*=============== VARIABLES CSS ===============*/
+/*--------- VARIABLES CSS ---------*/
 :root {
   --header-height: 3rem;
 
-  /*========== Colors ==========*/
+  /*------ Colors ------*/
   --hue: 174;
   --sat: 63%;
-  --first-color: hsl(var(--hue), var(--sat), 40%);
+  --first-color: rgb(0, 140, 255);
   --first-color-alt: hsl(var(--hue), var(--sat), 36%);
   --title-color: hsl(var(--hue), 12%, 15%);
   --text-color: hsl(var(--hue), 8%, 35%);
   --body-color: hsl(var(--hue), 100%, 99%);
   --container-color: #FFF;
 
-  /*========== Font and typography ==========*/
+  /*------ Font and typography ------*/
   --body-font: 'Open Sans', sans-serif;
   --h1-font-size: 1.5rem;
   --normal-font-size: .938rem;
   --tiny-font-size: .625rem;
 
-  /*========== z index ==========*/
+  /*------ z index ------*/
   --z-tooltip: 10;
-  --z-fixed: 100;
+  --z-fixed: 99;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #e8e7e7;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(101, 185, 253);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--first-color);
 }
 
 @media screen and (min-width: 968px) {
@@ -33,7 +51,7 @@
   }
 }
 
-/*=============== BASE ===============*/
+/*--------- BASE ---------*/
 * {
   box-sizing: border-box;
   padding: 0;
@@ -50,6 +68,7 @@ body {
   font-size: var(--normal-font-size);
   background-color: var(--body-color);
   color: var(--text-color);
+  position: relative;
 }
 
 ul {
@@ -65,30 +84,86 @@ img {
   height: auto;
 }
 
-/*=============== REUSABLE CSS CLASSES ===============*/
+/*--------- REUSABLE CSS CLASSES ---------*/
 .section {
-  padding: 4.5rem 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -5rem;
 }
 
-.section__title {
-  font-size: var(--h1-font-size);
-  color: var(--title-color);
+.section-title {
+  font-size: 60px;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 8px var(--first-color);
+  color: var(--body-color);
+  -webkit-text-stroke: 1.5px var(--text-color);
   text-align: center;
   margin-bottom: 1.5rem;
 }
 
-.section__height {
+.section-height {
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.section-height p{
+  font-size: 20px;
+  color: var(--text-color);
+  font-weight: 600;
+  text-transform: capitalize;
+  opacity: .7;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-height p span{
+  color: var(--first-color);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 2px;
 }
 
-/*=============== LAYOUT ===============*/
+.search,
+.login {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  background-color: hsla(230, 75%, 15%, .1);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(24px); /* For safari */
+  padding: 8rem 1.5rem 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .4s;
+}
+
+.search-close,
+.login-close {
+  position: absolute;
+  top: 3rem;
+  right: 48%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  background-color: var(--first-color);
+  color: var(--container-color);
+  padding: 5px;
+  border-radius: 50%;
+}
+
+/*--------- LAYOUT ---------*/
 .container {
   max-width: 968px;
   margin-left: 1rem;
   margin-right: 1rem;
 }
 
-/*=============== HEADER ===============*/
+
+/*--------- HEADER ---------*/
 .header {
   position: fixed;
   top: 0;
@@ -99,7 +174,7 @@ img {
   transition: .4s;
 }
 
-/*=============== NAV ===============*/
+/*--------- NAV ---------*/
 .nav {
   height: var(--header-height);
   display: flex;
@@ -107,18 +182,191 @@ img {
   align-items: center;
 }
 
-.nav__img {
+.nav-img {
   width: 32px;
   border-radius: 50%;
 }
 
-.nav__logo {
-  color: var(--title-color);
+.nav-logo {
+  color: var(--first-color);
   font-weight: 600;
 }
 
+/* ---------==== Nav right side ---------== */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  column-gap: 1rem;
+}
+
+.nav-search, 
+.nav-login, 
+.nav-close {
+  font-size: 1.25rem;
+  color: var(--first-color);
+  cursor: pointer;
+  transition: color .4s;
+}
+
+:is(.nav-search, .nav-login):hover {
+  color: var(--first-color);
+}
+/* --------------------------- */
+
+/*--------- SEARCH ---------*/
+.search-form {
+  display: flex;
+  align-items: center;
+  column-gap: .5rem;
+  background-color: var(--container-color);
+  box-shadow: 0 8px 32px hsla(230, 75%, 15%, .2);
+  padding-inline: 1rem;
+  border-radius: .5rem;
+  transform: translateY(-5rem);
+  transition: transform .4s;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.search-icon {
+  font-size: 1.25rem;
+  color: var(--first-color);
+}
+
+.search-input {
+  width: 100%;
+  padding-block: 1rem;
+  background-color: var(--container-color);
+  border: none;
+  outline: none;
+  font-family: var(--body-font);
+  font-size: 16px;
+}
+.search-input::placeholder {
+  color: var(--title-color);
+  opacity: .6;
+}
+
+/* Show search */
+.show-search {
+  opacity: 1;
+  pointer-events: initial;
+}
+
+.show-search .search-form {
+  transform: translateY(-1rem);
+}
+/* --------------------------- */
+
+/*--------- LOGIN ---------*/
+.login-form, 
+.login-group {
+  display: grid;
+}
+
+.login-form {
+  background-color: var(--container-color);
+  padding: 2rem 1.5rem 2.5rem;
+  box-shadow: 0 8px 32px hsla(230, 75%, 15%, .2);
+  border-radius: 1rem;
+  row-gap: 1.25rem;
+  text-align: center;
+  transform: translateY(-5rem);
+  transition: transform .4s;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.login-title {
+  font-size: var(--h1-font-size);
+  color: var(--first-color);
+  font-family: var(--body-font);
+}
+
+.login-group {
+  row-gap: 1rem;
+}
+
+.login-label {
+  display: block;
+  text-align: initial;
+  color: var(--title-color);
+  font-family: var(--body-font);
+  font-weight: var(--font-medium);
+  margin-bottom: .25rem;
+}
+
+.login-input {
+  width: 100%;
+  background-color: var(--container-color);
+  outline: 2px solid rgb(230, 229, 229);
+  border: none;
+  padding: 8px 10px;
+  border-radius: .5rem;
+  color: var(--text-color);
+  font-family: var(--body-font);
+  font-size: 16px;
+  transition: .2s ease-in-out;
+  transition-property: outline-color;
+}
+.login-input:focus{
+  outline-color: var(--first-color);
+}
+
+.login-input::placeholder {
+  color: var(--text-color);
+  opacity: .6;
+}
+
+.login-signup {
+  margin-bottom: .5rem;
+}
+
+.login-signup a {
+  color: var(--first-color);
+  font-family: var(--body-font);
+}
+
+.login-forgot {
+  display: inline-block;
+  color: var(--first-color);
+  margin-bottom: 1.25rem;
+  font-size: 16px;
+  font-family: var(--body-font);
+}
+
+.login-button {
+  display: inline-block;
+  background-color: var(--first-color);
+  width: 100%;
+  color: #fff;
+  font-weight: var(--font-medium);
+  font-family: var(--body-font);
+  font-size: 15px;
+  padding: 10px 10px;
+  border-radius: .5rem;
+  cursor: pointer;
+  transition: box-shadow .4s;
+  border: none;
+  outline: none;
+}
+
+.login-button:hover {
+  box-shadow: 0 4px 24px hsla(230, 75%, 40%, .4);
+}
+
+/* Show login */
+.show-login {
+  opacity: 1;
+  pointer-events: initial;
+}
+
+.show-login .login-form {
+  transform: translateY(-1rem);
+}
+
 @media screen and (max-width: 767px) {
-  .nav__menu {
+  .nav-menu {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -132,14 +380,18 @@ img {
     border-radius: 1.25rem 1.25rem 0 0;
     transition: .4s;
   }
+  .search-close,
+  .login-close {
+    right: 45%;
+  }
 }
 
-.nav__list, 
-.nav__link {
+.nav-list, 
+.nav-link {
   display: flex;
 }
 
-.nav__link {
+.nav-link {
   flex-direction: column;
   align-items: center;
   row-gap: 4px;
@@ -147,19 +399,18 @@ img {
   font-weight: 600;
 }
 
-.nav__list {
+.nav-list {
   justify-content: space-around;
 }
 
-.nav__name {
+.nav-name {
   font-size: var(--tiny-font-size);
   /* display: none;*/ /* Minimalist design, hidden labels */
 }
 
-.nav__icon {
+.nav-icon {
   font-size: 1.5rem;
 }
-
 /*Active link*/
 .active-link {
   position: relative;
@@ -168,38 +419,49 @@ img {
 }
 
 /* Minimalist design, active link */
-/* .active-link::before{
+.active-link::before{
   content: '';
   position: absolute;
   bottom: -.5rem;
-  width: 4px;
+  width: 500px;
   height: 4px;
   background-color: var(--first-color);
-  border-radius: 50%;
-} */
+  border-radius: 5px;
+}
 
 /* Change background header */
 .scroll-header {
   box-shadow: 0 1px 12px hsla(var(--hue), var(--sat), 15%, 0.15);
 }
 
-/*=============== MEDIA QUERIES ===============*/
+/*--------- MEDIA QUERIES ---------*/
 /* For small devices */
 /* Remove if you choose, the minimalist design */
-@media screen and (max-width: 320px) {
-  .nav__name {
+@media screen and (max-width: 575px) {
+  .nav-name {
+    display: none;
+  }
+  .section-height p{
     display: none;
   }
 }
 
 /* For medium devices */
 @media screen and (min-width: 576px) {
-  .nav__list {
+  .nav-list {
     justify-content: center;
     column-gap: 3rem;
   }
+  
+  .section-height p{
+    display: none;
+  }
 }
-
+@media screen and (max-width: 766px) {
+  .active-link::before {
+    width: 18px;
+  }
+}
 @media screen and (min-width: 767px) {
   body {
     margin: 0;
@@ -210,17 +472,17 @@ img {
   .nav {
     height: calc(var(--header-height) + 1.5rem); /* 4.5rem */
   }
-  .nav__img {
+  .nav-img {
     display: none;
   }
-  .nav__icon {
+  .nav-icon {
     display: none;
   }
-  .nav__name {
+  .nav-name {
     font-size: var(--normal-font-size);
     /* display: block; */ /* Minimalist design, visible labels */
   }
-  .nav__link:hover {
+  .nav-link:hover {
     color: var(--first-color);
   }
 
@@ -228,11 +490,11 @@ img {
   .active-link::before {
     content: '';
     position: absolute;
-    bottom: -.75rem;
-    width: 4px;
+    bottom: -.50rem;
+    width: 100%;
     height: 4px;
     background-color: var(--first-color);
-    border-radius: 50%;
+    border-radius: 5px;
   }
 
   /* Minimalist design */
@@ -246,5 +508,8 @@ img {
   .container {
     margin-left: auto;
     margin-right: auto;
+  }
+  .section-height p{
+    display: flex;
   }
 }

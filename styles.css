@@ -405,7 +405,6 @@ img {
 
 .nav-name {
   font-size: var(--tiny-font-size);
-  /* display: none;*/ /* Minimalist design, hidden labels */
 }
 
 .nav-icon {
@@ -418,7 +417,6 @@ img {
   transition: .3s;
 }
 
-/* Minimalist design, active link */
 .active-link::before{
   content: '';
   position: absolute;
@@ -436,7 +434,6 @@ img {
 
 /*--------- MEDIA QUERIES ---------*/
 /* For small devices */
-/* Remove if you choose, the minimalist design */
 @media screen and (max-width: 575px) {
   .nav-name {
     display: none;
@@ -480,13 +477,11 @@ img {
   }
   .nav-name {
     font-size: var(--normal-font-size);
-    /* display: block; */ /* Minimalist design, visible labels */
   }
   .nav-link:hover {
     color: var(--first-color);
   }
 
-  /* First design, remove if you choose the minimalist design */
   .active-link::before {
     content: '';
     position: absolute;
@@ -497,10 +492,6 @@ img {
     border-radius: 5px;
   }
 
-  /* Minimalist design */
-  /* .active-link::before{
-      bottom: -.75rem;
-  } */
 }
 
 /* For large devices */
